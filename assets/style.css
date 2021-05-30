@@ -5,8 +5,23 @@
 }
 /*styling of the whole body*/
 body {
-    margin: 10px;
+    
     height: 100%;
+}
+
+.jumbo {
+    background-image:url(./weatherbanner.png);
+  
+    background-size: cover;
+}
+
+.jumbo h1 {
+    font-weight: bolder;
+    font-size: 400%;
+}
+
+.container-fluid {
+    margin: 20px;
 }
 
 /*styling of the header*/
@@ -29,9 +44,21 @@ body {
 }
 
 .card-body {
-    height: 300%
+    height: 300%;
+    padding: 50px;
 }
 
+/*Styling the titles of the cities for the current weather section*/
 #showCurrentWeather h1 {
    text-align: center;
+   font-weight: bolder;
+}
+
+/*Styling the search history buttons*/
+.city-history {
+    border-radius: 8px;
+    background-color: rgb(192, 221, 253);
+    font-size: 150%;
+    
+
 }
