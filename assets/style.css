@@ -32,3 +32,6 @@ body {
     height: 300%
 }
 
+#showCurrentWeather h1 {
+   text-align: center;
+}
