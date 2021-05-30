@@ -42,7 +42,7 @@ $(document).ready(function () {
             });
          }
             
-    });
+   
 
             //Created function to get data for current weather
             function showCurrentWeather(data) {
@@ -64,41 +64,55 @@ $(document).ready(function () {
 
 
 
-         function getForecast() {
+         function getForecast(list) {
           
             $.ajax({
-                url:'https://api.openweathermap.org/data/2.5/forecast?q=' + city + "&units=imperial" + "&APPID=862f97705f5cae105644a854f96037eb",
+                url:'https://api.openweathermap.org/data/2.5/forecast?q=' + city + "&units=imperial&APPID=862f97705f5cae105644a854f96037eb",
                 type: "GET",
-            }).then(function (data) {
-                console.log(data);
+             //   dataType: "jsonp"
+            }).then(function (list) {
+                console.log(list);
+                let forecast = showForecast(list);
+               $("#showForecast").html(forecast);
                 //Empty out cards to show next forecast when new city is searched
                     $("#showForecast").empty();
+           
+        });
+            function showForecast(data) {
+                  //Loop through 5 days
+                  for (let i= 0; i < data.lenght[i].length; i++) {
+                   //  return   "<img src=' https://openweathermap.org/img/wn/" + data.list[i].weather[0].icon + ".png'> " +
+                   //    "<h3>Temperature: " + data.list[i].main.temp + "°F </h3>" +
+                      //Displaying the humidity 
+                   //   "<h3>Humidity: " + data.list[i].main.humidity + "% </h3>" 
+                   let card = $("<div>");
+                    let title =$("<h2>");
+                    let cardCol = $("<div class='col-2'>");
+                    let cardImg = $("<img>").attr("src", "https://openweathermap.org/img/wn/" + data.list[i].weather[0].icon + ".png ");
+                    let cardTemp = $("<h3>").text("Temperature: " + list[i].main.temp + " °F");
+                    let cardHumid = $("<h3>").text("Humidity: " + list[i].main.humidity + " %");
+
+                   $("#showForecast").append(card.append(cardCol.append((title).text(moment().add(i, "day").format('L')),cardImg, cardTemp, cardHumid)));
+
+
+        
+           
+
+
+                    };
+                
+
+              };
+              
+            
+            }
+    
+            })
                    
 
           
 
-                    //Loop through 5 days
-                    for (let i= 1; i < 6; i++) {
-                        let card = $("<div>");
-                        let title =$("<h2>");
-                        let cardCol = $("<div class='col-2'>");
-                        let cardImg = $("<img>").attr("src", "https://openweathermap.org/img/wn/" + data.list[i].weather[0].icon + ".png' ");
-                        let cardTemp = $("<h3>").text("Temperature: " + data.list[i].main.temp + " °F");
-                        let cardHumid = $("<h3>").text("Humidity: " + data.list[i].main.humidity + " %");
-
-                        $("#showForecast").append(card.append(cardCol.append((title).text(moment().add(i, "day").format('L')),cardImg, cardTemp, cardHumid)));
-
-
-            
-               
-
-
-                        }
-
-                    });
                   
-                
-
 
         //Function to save searches to local storage
         function saveCities() {
@@ -138,10 +152,5 @@ $(document).ready(function () {
 
          
        
-             }
-            })
-
+             })
             
-
-         
-         
