@@ -11,45 +11,38 @@ $(document).ready(function () {
         let city = $("#city-search").val();
         //if city is not blank then use an ajax call to get data from the API url and console log that data
         if (city != "") {
+            //Empty the search bar when button is pushed
+            $("#city-search").val('');
+            //Call function to call the API for current weather
+            getCurrentWeather();
+            getForecast();
+
+
+
+        }
+
+
+        function getCurrentWeather() {
             $.ajax({
                 //url for the current weather, added &units=imperia to conver to °F 
                 url: 'https://api.openweathermap.org/data/2.5/weather?q=' + city + "&units=imperial" + "&APPID=862f97705f5cae105644a854f96037eb",
                 type: "GET",
-                dataType: "jsonp",
-                //if the api call is a success then this function is called
-                success: function (data) {
-                    console.log(data);
+            }).then(function (data) {
+                console.log(data);
                     //Create variable to use showCurrentWeather function
                     let current = showCurrentWeather(data);
                     //Displaying the value to the html id of showCurrentWeather
                     $("#showCurrentWeather").html(current);
-                    //Empty the search bar when button is pushed
-                    $("#city-search").val('');
                     //Appending the search history and creating buttons with the name of the city searched
                     $("#search-history-results").append("<button class='city-history'>" + city + "</button>");
                     //saving city into local storage
                     localStorage.setItem(city, city);
 
 
-                }
-                /*  })
-              } $.ajax({
-                  url: 'https://api.openweathermap.org/data/2.5/forecast?q=' + city + "&units=imperial" + "&APPID=862f97705f5cae105644a854f96037eb",
-                  type: "GET",
-              }).then(function (data) {
-                  for (let i =0; i < data.list.lenght; i++ ) {
-                      let dateTime =data.list[i].dt_txt;
-                      let date = dateTime.split(" ")[0];
-                      let time = dateTime.split(" ")[1];
-      
-                      let forecast = showForecastdata;
-                      $("#showForecast").html(forecast);
-                      
-      */
-
-            })
-
-            //  getFutureForecast();
+            });
+         }
+            
+    });
 
             //Created function to get data for current weather
             function showCurrentWeather(data) {
@@ -66,63 +59,89 @@ $(document).ready(function () {
                     //Displaying the wind speed 
                     "<h3>Wind Speed: " + data.wind.speed + "MPH </h3>"
 
-            }
+            };
+        
 
 
-            //Function to save searches to local storage
-            function saveCities() {
-                //creating an empty array to store the searched cities in
-                let searches = [];
-                //
-                cities = Object.keys(localStorage),
-                    i = cities.lenght;
-                while (i--) {
-                    //pushing searches into local storage and getting the stores cities from local storage index
-                    searches.push(localStorage.getItem(cities[i]));
-                }
-                for (j = 0; j < searches.length; j++) {
-                    //Creating buttons for each search that is saved in search history
-                    $("#search-history-results").append("<button class='city-searches>" + searches[j] + "</button>");
-                }
+
+         function getForecast() {
+          
+            $.ajax({
+                url:'https://api.openweathermap.org/data/2.5/forecast?q=' + city + "&units=imperial" + "&APPID=862f97705f5cae105644a854f96037eb",
+                type: "GET",
+            }).then(function (data) {
+                console.log(data);
+                //Empty out cards to show next forecast when new city is searched
+                    $("#showForecast").empty();
+                   
+
+          
+
+                    //Loop through 5 days
+                    for (let i= 1; i < 6; i++) {
+                        let card = $("<div>");
+                        let title =$("<h2>");
+                        let cardCol = $("<div class='col-2'>");
+                        let cardImg = $("<img>").attr("src", "https://openweathermap.org/img/wn/" + data.list[i].weather[0].icon + ".png' ");
+                        let cardTemp = $("<h3>").text("Temperature: " + data.list[i].main.temp + " °F");
+                        let cardHumid = $("<h3>").text("Humidity: " + data.list[i].main.humidity + " %");
+
+                        $("#showForecast").append(card.append(cardCol.append((title).text(moment().add(i, "day").format('L')),cardImg, cardTemp, cardHumid)));
+
+
+            
+               
+
+
+                        }
+
+                    });
+                  
+                
+
+
+        //Function to save searches to local storage
+        function saveCities() {
+            //creating an empty array to store the searched cities in
+            let searches = [];
+            //
+            cities = Object.keys(localStorage),
+                i = cities.lenght;
+            while (i--) {
+                //pushing searches into local storage and getting the stores cities from local storage index
+                searches.push(localStorage.getItem(cities[i]));
             }
-            //function to save to local storage
+            for (j = 0; j < searches.length; j++) {
+                //Creating buttons for each search that is saved in search history
+                $("#search-history-results").append("<button class='city-searches>" + searches[j] + "</button>");
+            }
+        };
+        
+        //function to save to local storage
+        saveCities();
+        //function to list the search history
+        listCities();
+
+        //Function to list the search history citites
+        function listCities() {
+            //adding <li> element to the html class and giving them the text of the name of the city that was searched
+            let listItem = $("<li>").addClass("list-group-item").text(city);
+            //appending the list items to the id history-list to show on the page
+            $("#history-list").append(listItem);
             saveCities();
-            //function to list the search history
-            listCities();
+        };
 
-            //Function to list the search history citites
-            function listCities() {
-                //adding <li> element to the html class and giving them the text of the name of the city that was searched
-                let listItem = $("<li>").addClass("list-group-item").text(city);
-                //appending the list items to the id history-list to show on the page
-                $("#history-list").append(listItem);
-                saveCities();
-            }
+        
+        
+       
+    
 
-            /*
-                function showForecastdata() {
-                    return  "<img src ='https://openweathermap.org/img/wn/" + data.list[i].weather[0].icon + ".png'> " +
-                            "<h3>Temperature: " + data.list[i].main.temp + "°F" +
-                            "<h3>Humidity: " + data.list[i].main.humidity + "%" 
+         
+       
+             }
+            })
+
             
-            
-            
-                      if (time === "12:00:00") {
-                        $("#day-" + day_counter).children(".card-date").text(month + "/" + day + "/" + year);
-                        $("#day-" + day_counter).children(".icon").attr("src", "https://openweathermap.org/img/wn/" +data.list[i].weather[0].icon + ".png");
-                        $("#day-" + day_counter).children(".5day-temp").text("Temperature: " +data.list[i].main.temp + "°F");
-                        $("#day-" + day_counter).children(".5day-humidity").text("Humidity: " +data.list[i].main.humidity + "%");
-                        day_counter++;
-                        
-                    }
-                }}
-            
-                    })
-                })
-            
-            
-            
-            */
-        }
-    })
-})
+
+         
+         
