@@ -70,6 +70,7 @@ $(document).ready(function () {
                 $("#search-history-results").append("<button class='city-history'>" + city + "</button>");
                 //saving city into local storage
                 localStorage.setItem(city, city);
+                
 
             });
 
@@ -95,12 +96,14 @@ $(document).ready(function () {
         };
 
 //Function to get the 5day forecast
-       function getForecast(data) {
+       function getForecast() {
             //creating the url for forecastapi in a variable
-            let lat = data.coord.lat
-            let lon = data.coord.lon
+            
+
+       //     let lat = data.coord.lat
+        //    let lon = data.coord.lon
          
-            let forecastUrl = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&exclude=hourly,minutely,alerts" + "&units=imperial" + "&APPID=862f97705f5cae105644a854f96037eb";
+            let forecastUrl = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&units=imperial" + "&APPID=862f97705f5cae105644a854f96037eb";
 //Ajax call to get the information from the api
             $.ajax({
                 url: forecastUrl,
@@ -116,7 +119,7 @@ $(document).ready(function () {
                 //Creating variable forecast to equal function
                let forecast = showForecast(results);
                //Appending the results from the showForecast function to the html id "#showForecast"
-                               $("#showForecast").html(forecast);       
+              $("#showForecast").html(forecast);       
 
             });
 
