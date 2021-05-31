@@ -124,29 +124,29 @@ $(document).ready(function () {
         
 
              $("#icon0").html("<img src=' https://openweathermap.org/img/wn/" + results[0].weather[0].icon + ".png'> ") +
-                $("#cardTemp0").text(results[0].main.temp) +
-                $("#cardWind0").text(results[0].wind.speed) +
-                $("#cardHumidity0").text(results[0].main.humidity) +
+                $("#cardTemp0").text("Temperature: " +results[0].main.temp) +
+                $("#cardWind0").text("Wind Speed: " +results[0].wind.speed) +
+                $("#cardHumidity0").text("Humidity: " +results[0].main.humidity) +
 
                 $("#icon1").html("<img src=' https://openweathermap.org/img/wn/" + results[1].weather[0].icon + ".png'> ") +
-                $("#cardTemp1").text(results[1].main.temp) +
-                $("#cardWind1").text(results[1].wind.speed) +
-                $("#cardHumidity1").text(results[1].main.humidity) +
+                $("#cardTemp1").text("Temperature: " +results[1].main.temp) +
+                $("#cardWind1").text("Wind Speed: " +results[1].wind.speed) +
+                $("#cardHumidity1").text("Humidity: " +results[1].main.humidity) +
 
                 $("#icon2").html("<img src=' https://openweathermap.org/img/wn/" + results[2].weather[0].icon + ".png'> ") +
-                $("#cardTemp2").text(results[2].main.temp) +
-                $("#cardWind2").text(results[2].wind.speed) +
-                $("#cardHumidity2").text(results[2].main.humidity) +
+                $("#cardTemp2").text("Temperature: " +results[2].main.temp) +
+                $("#cardWind2").text("Wind Speed: " +results[2].wind.speed) +
+                $("#cardHumidity2").text("Humidity: " +results[2].main.humidity) +
 
                 $("#icon3").html("<img src=' https://openweathermap.org/img/wn/" + results[3].weather[0].icon + ".png'> ") +
-                $("#cardTemp3").text(results[3].main.temp) +
-                $("#cardWind3").text(results[3].wind.speed) +
-                $("#cardHumidity3").text(results[3].main.humidity) +
+                $("#cardTemp3").text("Temperature: " +results[3].main.temp) +
+                $("#cardWind3").text("Wind Speed: " +results[3].wind.speed) +
+                $("#cardHumidity3").text("Humidity: " +results[3].main.humidity) +
 
                 $("#icon4").html("<img src=' https://openweathermap.org/img/wn/" + results[4].weather[0].icon + ".png'> ") +
-                $("#cardTemp4").text(results[4].main.temp) +
-                $("#cardWind4").text(results[4].wind.speed) +
-                $("#cardHumidity4").text(results[4].main.humidity)
+                $("#cardTemp4").text("Temperature: " +results[4].main.temp) +
+                $("#cardWind4").text("Wind Speed: " +results[4].wind.speed) +
+                $("#cardHumidity4").text("Humidity: " +results[4].main.humidity)
 
             };
         });
