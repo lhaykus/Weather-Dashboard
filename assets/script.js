@@ -119,22 +119,27 @@ $(document).ready(function () {
 //Function to return the results from the getForecast function to elements on the htlm
 //Seperating elements to tagert each [i] of the forecast to display 5 days
         function showForecast(results) {
-            return "<img src=' https://openweathermap.org/img/wn/" + data.weather[0].icon + ".png'> " +
+            return "<div class='card text-white bg-info mb-3' style='max-width: 18rem;'>" +
+                "<img src=' https://openweathermap.org/img/wn/" + data.weather[0].icon + ".png'> " +
                 "<h3 class='forecast0;'>Temperature: " + results[0].main.temp + "°F </h3>" +
                 "<h3>Humidity: " + results[0].main.humidity + "% </h3>" +
 
+                "<div class='card text-white bg-info mb-3' style='max-width: 18rem;'>" +
                 "<img src=' https://openweathermap.org/img/wn/" + data.weather[1].icon + ".png'> " +
                 "<h3 class='forecast1;'>Temperature: " + results[1].main.temp + "°F </h3>" +
                 "<h3>Humidity: " + results[1].main.humidity + "% </h3>" +
 
+                "<div class='card text-white bg-info mb-3' style='max-width: 18rem;'>" +
                 "<img src=' https://openweathermap.org/img/wn/" + data.weather[2].icon + ".png'> " +
                 "<h3 class='forecast2;'>Temperature: " + results[2].main.temp + "°F </h3>" +
                 "<h3>Humidity: " + results[2].main.humidity + "% </h3>" +
 
+                "<div class='card text-white bg-info mb-3' style='max-width: 18rem;'>" +
                 "<img src=' https://openweathermap.org/img/wn/" + data.weather[3].icon + ".png'> " +
                 "<h3 class='forecast3;'>Temperature: " + results[3].main.temp + "°F </h3>" +
                 "<h3>Humidity: " + results[3].main.humidity + "% </h3>" +
 
+                "<div class='card text-white bg-info mb-3' style='max-width: 18rem;'>" +
                 "<img src=' https://openweathermap.org/img/wn/" + data.weather[4].icon + ".png'> " +
                 "<h3 class='forecast4;'>Temperature: " + results[4].main.temp + "°F </h3>" +
                 "<h3>Humidity: " + results[4].main.humidity + "% </h3>"

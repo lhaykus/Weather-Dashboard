@@ -9,11 +9,13 @@ body {
     height: 100%;
 }
 
+/*Styling the jumbotron with a picture*/
 .jumbo {
     background-image:url(./weatherbanner.png);
   
     background-size: cover;
 }
+/*Styling the text of the jumpotron*/
 
 .jumbo h1 {
     font-weight: bolder;
@@ -24,7 +26,6 @@ body {
     margin: 20px;
 }
 
-/*styling of the header*/
 
 /*styling class for the card headers*/
 .card-header {
