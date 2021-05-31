@@ -8,7 +8,7 @@ $(document).ready(function () {
     function saveCities() {
         //creating an empty array to store the searched cities in
         let searches = [];
-        //
+        //saving the cities in order of searched
         cities = Object.keys(localStorage),
             i = cities.lenght;
         while (i--) {
@@ -46,8 +46,9 @@ $(document).ready(function () {
         if (city != "") {
             //Empty the search bar when button is pushed
             $("#city-search").val('');
-            //Call function to call the API for current weather
+            //Call function to get the current weather function
             getCurrentWeather();
+            //Call function to get the forecast function
             getForecast();
             //   getUV();
 
@@ -63,7 +64,7 @@ $(document).ready(function () {
                 console.log(data);
                 //Create variable to use showCurrentWeather function
                 let current = showCurrentWeather(data);
-                //Displaying the value to the html id of showCurrentWeather
+                //Appending the data from the showCurrentWeather function to the html id "#showCurrentWeather"
                 $("#showCurrentWeather").html(current);
                 //Appending the search history and creating buttons with the name of the city searched
                 $("#search-history-results").append("<button class='city-history'>" + city + "</button>");
@@ -75,11 +76,11 @@ $(document).ready(function () {
         };
 
 
-        //Created function to get data for current weather
+        //Function to return the data from the getCurrentWeather function to elements on the html
         function showCurrentWeather(data) {
             //Creating h1 with data.name to display the name of the current city searched
             return "<h1 stlye='font-size: 50px; font-weight: bold;'> " + data.name + " </h1>" +
-                //Creating an image to display the weather icon that matches the data.weather
+                //Creating an image to display the weather icon that matches the data.weatherindex
                 "<img src=' https://openweathermap.org/img/wn/" + data.weather[0].icon + ".png'> " +
                 //Creating an h2 element to display the description data from the weather object with index 0
                 "<h3>Condition: " + data.weather[0].main + "</h3>" +
@@ -92,27 +93,31 @@ $(document).ready(function () {
 
 
         };
-
+//Function to get the 5day forecast
         function getForecast() {
+            //creating the url for forecastapi in a variable
             let forecastUrl = 'https://api.openweathermap.org/data/2.5/forecast?q=' + city + "&units=imperial&APPID=862f97705f5cae105644a854f96037eb";
-
+//Ajax call to get the information from the api
             $.ajax({
                 url: forecastUrl,
                 type: "GET",
                 dataType: "jsonp",
             }).then(function (data) {
                 console.log(data);
-
+//creating a variable for the list array that is found in the data object
                 let results = data.list;
+                //Console log to make sure it shows the list, which it does
                 console.log(results);
-
+//Creating variable forecast to equal function
                 let forecast = showForecast(results);
+//Appending the results from the showForecast function to the html id "#showForecast"
                 $("#showForecast").html(forecast);
 
             });
 
         };
-
+//Function to return the results from the getForecast function to elements on the htlm
+//Seperating elements to tagert each [i] of the forecast to display 5 days
         function showForecast(results) {
             return "<img src=' https://openweathermap.org/img/wn/" + data.weather[0].icon + ".png'> " +
                 "<h3 class='forecast0;'>Temperature: " + results[0].main.temp + "°F </h3>" +
