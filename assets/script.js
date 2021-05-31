@@ -70,7 +70,7 @@ $(document).ready(function () {
                 $("#search-history-results").append("<button class='city-history'>" + city + "</button>");
                 //saving city into local storage
                 localStorage.setItem(city, city);
-                
+
 
             });
 
@@ -95,67 +95,66 @@ $(document).ready(function () {
 
         };
 
-//Function to get the 5day forecast
-       function getForecast() {
+        //Function to get the 5day forecast
+        function getForecast() {
             //creating the url for forecastapi in a variable
-            
 
-       //     let lat = data.coord.lat
-        //    let lon = data.coord.lon
-         
             let forecastUrl = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&units=imperial" + "&APPID=862f97705f5cae105644a854f96037eb";
-//Ajax call to get the information from the api
+            //Ajax call to get the information from the api
             $.ajax({
                 url: forecastUrl,
                 type: "GET",
                 dataType: "jsonp",
-            }).then(function (data) {
-                console.log(data);
-//creating a variable for the list array that is found in the data object
-                let results = data.list;
+            }).then(function (response) {
+                console.log(response);
+                //creating a variable for the list array that is found in the data object
+                let results = response.list
                 //Console log to make sure it shows the list, which it does
                 console.log(results);
 
+                for(var i =0; i< 5; i++) {
                 //Creating variable forecast to equal function
-               let forecast = showForecast(results);
-               //Appending the results from the showForecast function to the html id "#showForecast"
-              $("#showForecast").html(forecast);       
+            //    let forecast = showForecast(results);
+                //Appending the results from the showForecast function to the html id "#showForecast"
+           //     $("#showForecast").html(forecast);
+           
+        
+        //Function to return the results from the getForecast function to elements on the htlm
+        //Seperating elements to tagert each [i] of the forecast to display 5 days
+        
 
-            });
+             $("#icon0").html("<img src=' https://openweathermap.org/img/wn/" + results[0].weather[0].icon + ".png'> ") +
+                $("#cardTemp0").text(results[0].main.temp) +
+                $("#cardWind0").text(results[0].wind.speed) +
+                $("#cardHumidity0").text(results[0].main.humidity) +
 
-        }
-//Function to return the results from the getForecast function to elements on the htlm
-//Seperating elements to tagert each [i] of the forecast to display 5 days
-        function showForecast(results) {
-             
- return     $("#icon0").html( "<img src=' https://openweathermap.org/img/wn/" + results[0].weather[0].icon + ".png'> ") +
-            $("#cardTemp0").text(results[0].main.temp) +
-            $("#cardWind0").text(results[0].wind.speed) +
-            $("#cardHumidity0").text(results[0].main.humidity) +
+                $("#icon1").html("<img src=' https://openweathermap.org/img/wn/" + results[1].weather[0].icon + ".png'> ") +
+                $("#cardTemp1").text(results[1].main.temp) +
+                $("#cardWind1").text(results[1].wind.speed) +
+                $("#cardHumidity1").text(results[1].main.humidity) +
 
-            $("#icon1").html( "<img src=' https://openweathermap.org/img/wn/" + results[1].weather[0].icon + ".png'> ") +
-            $("#cardTemp1").text(results[1].main.temp) +
-            $("#cardWind1").text(results[1].wind.speed) +
-            $("#cardHumidity1").text(results[1].main.humidity) +
+                $("#icon2").html("<img src=' https://openweathermap.org/img/wn/" + results[2].weather[0].icon + ".png'> ") +
+                $("#cardTemp2").text(results[2].main.temp) +
+                $("#cardWind2").text(results[2].wind.speed) +
+                $("#cardHumidity2").text(results[2].main.humidity) +
 
-            $("#icon2").html( "<img src=' https://openweathermap.org/img/wn/" + results[2].weather[0].icon + ".png'> ") +
-            $("#cardTemp2").text(results[2].main.temp) +
-            $("#cardWind2").text(results[2].wind.speed) +
-            $("#cardHumidity2").text(results[2].main.humidity) +
+                $("#icon3").html("<img src=' https://openweathermap.org/img/wn/" + results[3].weather[0].icon + ".png'> ") +
+                $("#cardTemp3").text(results[3].main.temp) +
+                $("#cardWind3").text(results[3].wind.speed) +
+                $("#cardHumidity3").text(results[3].main.humidity) +
 
-            $("#icon3").html( "<img src=' https://openweathermap.org/img/wn/" + results[3].weather[0].icon + ".png'> ") +
-            $("#cardTemp3").text(results[3].main.temp) +
-            $("#cardWind3").text(results[3].wind.speed) +
-            $("#cardHumidity3").text(results[3].main.humidity) +
+                $("#icon4").html("<img src=' https://openweathermap.org/img/wn/" + results[4].weather[0].icon + ".png'> ") +
+                $("#cardTemp4").text(results[4].main.temp) +
+                $("#cardWind4").text(results[4].wind.speed) +
+                $("#cardHumidity4").text(results[4].main.humidity)
 
-            $("#icon4").html( "<img src=' https://openweathermap.org/img/wn/" + results[4].weather[0].icon + ".png'> ") +
-            $("#cardTemp4").text(results[4].main.temp) +
-            $("#cardWind4").text(results[4].wind.speed) +
-            $("#cardHumidity4").text(results[4].main.humidity)
-        };
+            };
+        });
+    }
+        
 
-       
+
     });
 
-});
 
+});
