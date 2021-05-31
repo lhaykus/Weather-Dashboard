@@ -116,34 +116,34 @@ $(document).ready(function () {
 
                         $("#cardDate0").text(moment().add(1, 'days').format('L')) +
                        $("#icon0").html("<img src=' https://openweathermap.org/img/wn/" + results[0].weather[0].icon + ".png'> ") +
-                        $("#cardTemp0").text("Temperature: " + results[0].main.temp, " °F") +
-                        $("#cardWind0").text("Wind Speed: " + results[0].wind.speed) +
-                        $("#cardHumidity0").text("Humidity: " + results[0].main.humidity) +
+                        $("#cardTemp0").text("Temperature: " + results[0].main.temp + " °F") +
+                        $("#cardWind0").text("Wind Speed: " + results[0].wind.speed+ " MPH") +
+                        $("#cardHumidity0").text("Humidity: " + results[0].main.humidity + "%") +
 
                         $("#cardDate1").text(moment().add(2, 'days').format('L')) +
                         $("#icon1").html("<img src=' https://openweathermap.org/img/wn/" + results[1].weather[0].icon + ".png'> ") +
-                        $("#cardTemp1").text("Temperature: " + results[1].main.temp, " °F") +
-                        $("#cardWind1").text("Wind Speed: " + results[1].wind.speed) +
-                        $("#cardHumidity1").text("Humidity: " + results[1].main.humidity) +
+                        $("#cardTemp1").text("Temperature: " + results[1].main.temp + " °F") +
+                        $("#cardWind1").text("Wind Speed: " + results[1].wind.speed + " MPH") + 
+                        $("#cardHumidity1").text("Humidity: " + results[1].main.humidity+ "%") +
 
                         $("#cardDate2").text(moment().add(3, 'days').format('L')) +
                         $("#icon2").html("<img src=' https://openweathermap.org/img/wn/" + results[2].weather[0].icon + ".png'> ") +
-                        $("#cardTemp2").text("Temperature: " + results[2].main.temp, " °F") +
-                        $("#cardWind2").text("Wind Speed: " + results[2].wind.speed) +
-                        $("#cardHumidity2").text("Humidity: " + results[2].main.humidity) +
+                        $("#cardTemp2").text("Temperature: " + results[2].main.temp + " °F") +
+                        $("#cardWind2").text("Wind Speed: " + results[2].wind.speed+ " MPH") +
+                        $("#cardHumidity2").text("Humidity: " + results[2].main.humidity+ "%") +
 
 
                         $("#cardDate3").text(moment().add(4, 'days').format('L')) +
                         $("#icon3").html("<img src=' https://openweathermap.org/img/wn/" + results[3].weather[0].icon + ".png'> ") +
-                        $("#cardTemp3").text("Temperature: " + results[3].main.temp, " °F") +
-                        $("#cardWind3").text("Wind Speed: " + results[3].wind.speed) +
-                        $("#cardHumidity3").text("Humidity: " + results[3].main.humidity) +
+                        $("#cardTemp3").text("Temperature: " + results[3].main.temp + " °F") +
+                        $("#cardWind3").text("Wind Speed: " + results[3].wind.speed+ " MPH") +
+                        $("#cardHumidity3").text("Humidity: " + results[3].main.humidity+ "%") +
 
                         $("#cardDate4").text(moment().add(5, 'days').format('L')) +
                         $("#icon4").html("<img src=' https://openweathermap.org/img/wn/" + results[4].weather[0].icon + ".png'> ") +
-                        $("#cardTemp4").text("Temperature: " + results[4].main.temp, " °F") +
-                        $("#cardWind4").text("Wind Speed: " + results[4].wind.speed) +
-                        $("#cardHumidity4").text("Humidity: " + results[4].main.humidity)
+                        $("#cardTemp4").text("Temperature: " + results[4].main.temp + " °F") +
+                        $("#cardWind4").text("Wind Speed: " + results[4].wind.speed+ " MPH") +
+                        $("#cardHumidity4").text("Humidity: " + results[4].main.humidity+ "%")
 
                 };
             });
