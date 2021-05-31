@@ -115,7 +115,7 @@ $(document).ready(function () {
                 for (var i = 0; i < 5; i++) {
 
 
-                    $("#icon0").html("<img src=' https://openweathermap.org/img/wn/" + results[0].weather[0].icon + ".png'> ") +
+                       $("#icon0").html("<img src=' https://openweathermap.org/img/wn/" + results[0].weather[0].icon + ".png'> ") +
                         $("#cardTemp0").text("Temperature: " + results[0].main.temp) +
                         $("#cardWind0").text("Wind Speed: " + results[0].wind.speed) +
                         $("#cardHumidity0").text("Humidity: " + results[0].main.humidity) +
