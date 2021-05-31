@@ -24,7 +24,7 @@
             <div class="col-4 bg-light">
 
                 <h1>Search for City</h1>
-<!--Search bar and button-->
+                <!--Search bar and button-->
                 <div id="input-group">
                     <input type="text" name="city" id="city-search" class="form-control"
                         placeholder="Enter City Name" />
@@ -34,13 +34,13 @@
                 <ul class="list-group" id="search-history-results"></ul>
 
             </div>
-        
 
-        <!--Container to hold the current weather-->
-        <div class="container">
-            
+
+            <!--Container to hold the current weather-->
+            <div class="container">
+
                 <div class="col-8 current-weather">
-                    
+
                     <div id="showCurrentWeather">
                         <div id="uv-index">
 
@@ -48,27 +48,58 @@
 
 
                     </div>
-                    </div>
-                
+                </div>
+
             </div>
         </div>
     </div>
-    
+
     <!--5 day forecast section-->
     <!--Creating multiple div to show the 5day forecast-->
-    
+
     <div class="container">
         <h2> Forecast</h2>
-        <div class="row forecast">
-       <div id="showForecast" class = "card forecast0"></div>
-       <div id="showForecast" class = "card forecast1"></div>
-       <div id="showForecast" class = "card forecast2"></div>
-       <div id="showForecast" class = "card forecast3"></div>
-       <div id="showForecast" class = "card forecast4"></div>
-</div>
-    </div> 
+        <div class="row forecast" id="showForecast">
+            <div id="forecast0" class="card">
+                <img id="icon0">
+                <p id="cardTemp0"></p>
+                <p id="cardHumidity0"></p>
+                <p id="cardWind0"></p>
+            </div>
 
-   
+            <div id="forecast1" class="card">
+                <img id="icon1">
+                <p id="cardTemp1"></p>
+                <p id="cardHumidity1"></p>
+                <p id="cardWind1"></p>
+            </div>
+
+            <div id="forecast2" class="card">
+                <img id="icon2">
+                <p id="cardTemp2"></p>
+                <p id="cardHumidity2"></p>
+                <p id="cardWind2"></p>
+            </div>
+
+            <div id="forecast3" class="card">
+                <img id="icon3">
+                <p id="cardTemp3"></p>
+                <p id="cardHumidity3"></p>
+                <p id="cardWind3"></p>
+            </div>
+
+            <div id="forecast4" class="card">
+                <img id="icon4">
+                <p id="cardTemp4"></p>
+                <p id="cardHumidity4"></p>
+                <p id="cardWind4"></p>
+            </div>
+
+
+        </div>
+    </div>
+
+
     <!--jQuery-->
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <!--Bootstrap-->
@@ -80,4 +111,3 @@
 </body>
 
 </html>
-
