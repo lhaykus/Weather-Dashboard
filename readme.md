@@ -5,8 +5,8 @@ The application also saves the searches to local storage to be pulled from and d
 Each city weather shows the city name, temperature, humidity, condition and an icon for the user to view.
 
 
-
-https://github.com/lhaykus/Weather-Dashboard
+# Website:
+https://lhaykus.github.io/Weather-Dashboard/
 
 
 
